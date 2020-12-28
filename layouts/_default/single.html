@@ -18,6 +18,7 @@
     {{ .Content }}
     </div>
     <footer class="post-footer">
+        {{ partial "related.html" . }}
      {{ partial "post/tags.html" .}}
      {{ partial "post/prenext.html" .}}
      {{ partial "widgets/baidushare.html" .}}

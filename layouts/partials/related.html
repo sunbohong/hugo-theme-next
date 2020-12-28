@@ -1,0 +1,17 @@
+{{ range first 1 (where (where .Site.RegularPages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+	{{ $.Scratch.Set "has_related" true }}
+{{ end }}
+
+{{ if $.Scratch.Get "has_related" }}
+	<h2 class="see-also">相关推荐</h2>
+	{{ $related := .Site.RegularPages.Related . | first 5 }}
+	{{ with $related }}
+		<ul>
+			{{ range . }}
+				<li>
+					<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+				</li>
+			{{ end }}
+		</ul>
+	{{ end }}
+{{end}}
