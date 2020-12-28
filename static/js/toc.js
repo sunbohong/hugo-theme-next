@@ -1,4 +1,12 @@
 $(document).ready(function () {
+  var $t = $("#TableOfContents");
+  if (!$t[0]) {
+    return;
+  }
+  if ($t[0].parentElement.getAttribute('disableTocPre') == "true") {
+    return;
+  }
+
   var $article = $(".post-body");
   var count = [0, 0, 0, 0, 0, 0];
   var mark = [0, 0, 0, 0, 0, 0];
@@ -53,8 +61,6 @@ $(document).ready(function () {
       });
     });
   }
-
-  var $t = $("#TableOfContents");
   toc($t, "");
 });
 

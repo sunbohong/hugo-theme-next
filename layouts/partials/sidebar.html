@@ -7,17 +7,17 @@
 </div>
 <aside id="sidebar" class="sidebar">
   <div class="sidebar-inner">
-{{ if isset .Params "toc" }}
-  <ul class="sidebar-nav motion-element">
-    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-      {{ i18n "ToC" }}
-    </li>
-    <li class="sidebar-nav-overview" data-target="site-overview">
-      {{ i18n "SiteInfo" }}
-    </li>
-  </ul>
-{{ end }}
-    <section class="site-overview sidebar-panel {{ if not (isset .Params "toc") }} sidebar-panel-active {{ end }}">
+     {{ if and .IsPage (or .Params.toc (and (not (isset .Params "toc")) .Site.Params.enabletocbydefault))}}
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          {{ i18n "ToC" }}
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview">
+          {{ i18n "SiteInfo" }}
+        </li>
+      </ul>
+    {{ end }}
+    <section class="site-overview sidebar-panel {{ if not (and .IsPage (or .Params.toc (and (not (isset .Params "toc")) .Site.Params.enabletocbydefault))) }} sidebar-panel-active {{ end }}">
       {{ partial "sidebar/author.html" . }}
       {{ partial "sidebar/state.html" . }}
       {{ partial "sidebar/rss.html" . }}

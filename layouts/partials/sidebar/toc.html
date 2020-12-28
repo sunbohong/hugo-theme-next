@@ -1,7 +1,9 @@
-{{ if isset .Params "toc"}}
-<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-    <div class="post-toc">
-        <div class="post-toc-content">{{ .TableOfContents }}</div>
-    </div>
-</section>
+{{ if and .IsPage (or .Params.toc (and (not (isset .Params "toc")) .Site.Params.enabletocbydefault)) }}
+    <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc">
+            <div class="post-toc-content" disableTocPre={{.Params.disableTocPre}}>
+                {{ .TableOfContents }}
+            </div>
+        </div>
+    </section>
 {{ end }}
