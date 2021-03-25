@@ -16,6 +16,10 @@ pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
 DefaultContentLanguage = "zh"
 
+# 关闭复数列表页的标题。以“笔记”为例，默认情况下，列表的标题会变为“笔记s”，不符合中国人习惯 
+# 文档：https://github.com/gohugoio/hugo/blob/edc5c4741caaee36ba4d42b5947c195a3e02e6aa/docs/content/en/templates/lists.md#quotes
+pluralizeListTitles = false
+
 [Params]
   Introduce = "Programmer & Architect"
   Description = "蘭陵N散記 | 博客 | 软件 | 架构 | Java | Golang"
@@ -87,3 +91,4 @@ DefaultContentLanguage = "zh"
   Name = "知乎"
   Icon = "globe"
   URL = "https://www.zhihu.com/people/lan-ling-xin-yun"  
+
